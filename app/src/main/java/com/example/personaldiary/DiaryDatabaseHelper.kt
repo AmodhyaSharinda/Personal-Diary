@@ -50,12 +50,41 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatbaseN
                 val title = cursor.getString(cursor.getColumnIndexOrThrow(ColomnTitle))
                 val date = cursor.getString(cursor.getColumnIndexOrThrow(ColomnDate))
                 val note = cursor.getString(cursor.getColumnIndexOrThrow(ColomnNotes))
-                val diary = Diary(id, title, note, date)
+                val diary = Diary(id, title, date, note)
 //                val diary = Diary(id, title, note, calendar)
                 diaries.add(diary)
             } while (cursor.moveToNext())
         }
         cursor.close()
         return diaries
+    }
+
+    fun  updateDiary(diary: Diary){
+        val db = writableDatabase
+        val Values = ContentValues().apply {
+            put(ColomnTitle, diary.title)
+            put(ColomnDate, diary.date)
+            put(ColomnNotes, diary.note)
+        }
+        val whereClause = "$Colomid = ?"
+        val whereArds = arrayOf(diary.id.toString())
+        db.update(TableName, Values, whereClause, whereArds)
+        db.close()
+    }
+
+    fun getDiaryById(diaryID: Int): Diary{
+        val db =readableDatabase
+        val query = "SELECT * FROM $TableName WHERE $Colomid = $diaryID"
+        val cursor = db.rawQuery(query, null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(Colomid))
+        val title = cursor.getString(cursor.getColumnIndexOrThrow(ColomnTitle))
+        val date = cursor.getString(cursor.getColumnIndexOrThrow(ColomnDate))
+        val contetnt = cursor.getString(cursor.getColumnIndexOrThrow(ColomnNotes))
+
+        cursor.close()
+        db.close()
+        return Diary(id, title, date, contetnt)
     }
 }

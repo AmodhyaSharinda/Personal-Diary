@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PersonalDiary"
         tools:targetApi="31">
-
+        <activity
+            android:name=".UpdateDiary"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,7 +30,6 @@
             android:name=".DiaryPages"
             android:exported="false"
             android:theme="@style/Theme.PersonalDiary" />
-
         <activity
             android:name=".AddDiaryPages"
             android:exported="false"
