@@ -19,61 +19,8 @@
         android:text="Diary Pages"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/pageTitle"-->
-<!--        android:layout_margin="24dp"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginTop="-53dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        android:layout_marginBottom="24dp"-->
-<!--        android:elevation="4dp"-->
-<!--        android:padding="8dp"-->
-<!--        app:cardBackgroundColor="@color/peach">-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            &lt;!&ndash; Title &ndash;&gt;-->
-<!--            <TextView-->
-<!--                android:id="@+id/textViewTitle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:text="title"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold" />-->
-
-<!--            &lt;!&ndash; Date and Time &ndash;&gt;-->
-<!--            <TextView-->
-<!--                android:id="@+id/textViewDateTime"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/textViewTitle"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:text="date"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/Light_Gray"-->
-<!--                android:textSize="14sp" />-->
-
-<!--            &lt;!&ndash; Diary Content &ndash;&gt;-->
-<!--            <TextView-->
-<!--                android:id="@+id/textViewContent"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/textViewDateTime"-->
-<!--                android:text="content"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="16sp" />-->
-
-<!--        </RelativeLayout>-->
-<!--    </androidx.cardview.widget.CardView>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDiary"
