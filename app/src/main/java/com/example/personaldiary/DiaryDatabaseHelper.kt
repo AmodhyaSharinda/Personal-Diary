@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.util.Calendar
 
 class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatbaseName, null, DatabaseVersion){
 
@@ -37,5 +38,24 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatbaseN
         values.put(ColomnDate, diary.date.toString()) // Store date as milliseconds
         values.put(ColomnNotes, diary.note)
         return db.insert(TableName, null, values)
+    }
+
+    fun getAllDiaries(): List<Diary> {
+        val diaries = mutableListOf<Diary>()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TableName", null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow(Colomid))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(ColomnTitle))
+                val date = cursor.getString(cursor.getColumnIndexOrThrow(ColomnDate))
+                val note = cursor.getString(cursor.getColumnIndexOrThrow(ColomnNotes))
+                val diary = Diary(id, title, note, date)
+//                val diary = Diary(id, title, note, calendar)
+                diaries.add(diary)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return diaries
     }
 }
