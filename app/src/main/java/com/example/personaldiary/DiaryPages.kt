@@ -27,7 +27,7 @@ class DiaryPages : AppCompatActivity() {
         setContentView(binding.root)
 
         db = DiaryDatabaseHelper(this)
-        diaryAdapter = DiaryAdapter(db.getAllDiaries())
+        diaryAdapter = DiaryAdapter(db.getAllDiaries(), this)
 
         binding.recyclerViewDiary.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewDiary.adapter = diaryAdapter
